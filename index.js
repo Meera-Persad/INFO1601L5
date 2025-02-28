@@ -1,3 +1,6 @@
+/*
+
+
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];// 10 elements
 
 for(let i=0; i< arr.length; i++){
@@ -181,6 +184,7 @@ let people = [
 ];
 
 console.log(avgBMI(people));
+*/
 
 //object literal
 let bob = {
@@ -228,7 +232,7 @@ let paul = {
 
 const students = [bob, sally, paul];
 
-function getAverateGrade(student, course) {
+function getAverageGrade(student, course) {
   let sum = 0.0;
  
   for (let thecourse of student.transcript){
@@ -244,25 +248,24 @@ function getAverateGrade(student, course) {
   return -1;
 }
 
-console.log ('getAverageGrade');
-console.log(getAverateGrade(bob, 'INFO 1601'));
+
+console.log(getAverageGrade(bob, 'INFO 1603'));
 
 function getAssignmentMark (student, course, num) {
     for (let i of student.transcript){
       if (i.course === course){
-        for (let j of i.grades){
-          if (j === num){
-            return j;
-          }
+        return i.grades[num-1];
+          
         }
       }
-    }
+    
     return -1;
 }
 
-console.log ('getAssignmentMark');
-console.log (getAssignmentMark (bob, 'INFO 1603', 2));
-/*
+
+console.log (getAssignmentMark (bob, 'INFO 1603', 1));
+
+
  function averageAssessment(students, courseName, assignment){
     for (let k of students){
       if (students[k].transcript.course === courseName)
@@ -284,27 +287,22 @@ console.log (getAssignmentMark (bob, 'INFO 1603', 2));
         }
         return -1;
       }
-      */
+      
 
       function averageAssessment (students, courseName, assignment){
 
         let sum = 0;
         let counter = 0;
         for (let t of students){
-          let( q of students.transcript){
+          for(let q of t.transcript){
               if (q.course === courseName){
-                for (let r of q.grades){
-                  if (r === assignment){
-                    sum += r;
+                    sum += q.grades[assignment-1];
                     counter = counter +1;
                   }
                 }
               }
+              return sum/counter;
           }
         
-        }
-        return sum/counter;
-      }
-
-      console.log ('averageAssessment');
-      console.log (averageAssessment (students, 'INFO 1601', 0));
+       
+      console.log (averageAssessment (students, 'INFO 1601', 1));
